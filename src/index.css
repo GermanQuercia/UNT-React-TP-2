@@ -1,7 +1,12 @@
+*{
+    font-family: 'Roboto';
+}
+
 body {
     background-color: rgb(189, 158, 197);
     justify-content: center;
     align-items: center;
+    
 }
 
 .tarea {
@@ -32,9 +37,9 @@ body {
     left: 10%;
     top: 20px;
     width: 80%;
-    height: 600px;
-    background-color: #333;
-    color: #fff;
+    height: 88%;    
+    /* background-color: #e9e9e9; */
+    /* color: #fff; */
     text-align: center;
     padding: 10px;
     border-radius: 20px;

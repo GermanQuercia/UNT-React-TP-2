@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import TaskForm from './components/r_TaskForm';
-import TaskList from './components/r_TaskList';
+import TaskForm from './components/TaskForm';
+import TaskList from './components/TaskList';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -27,12 +27,14 @@ function App() {
 
 
   return (
-    <><div className='contenedor'>
+    <>
+      <div className='conteiner'>
       <div className='lista'>
-      <TaskList listaDeTareas={listaDeTareas} setListaDeTareas={setListaDeTareas} />
+        <TaskList listaDeTareas={listaDeTareas} setListaDeTareas={setListaDeTareas} /> 
+        
       </div>
       <div className='nueva'>
-      <TaskForm listaDeTareas={listaDeTareas} setListaDeTareas={setListaDeTareas} />
+        <TaskForm listaDeTareas={listaDeTareas} setListaDeTareas={setListaDeTareas} />
       </div>
       </div>
     </>

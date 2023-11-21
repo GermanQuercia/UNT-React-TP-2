@@ -3,20 +3,20 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import './styles.css';
 
-const TaskForm = (lista) => {
+const TaskForm = ({ setListaDeTareas }) => {
 
-    const [ID, setId] = useState(3);
-    const [dia, setDia] = useState(new Date().toLocaleDateString());
+    const ID = 1;
+    const [dia, setDia] = useState("");
+    const tareaParaAgregar = {
+        id: "",
+        dia: "",
+        hora: "",
+        tarea: "",
+        completada: false,
+    }
+
 
     const agregarTarea = () => {
-        
-        const tareaParaAgregar = {
-            id: "",
-            dia: "",
-            hora: "",
-            tarea: "",
-            completada: false,
-        }
 
         const fecha1 = document.getElementById("fechaElegir").value;
         tareaParaAgregar.dia = fecha1;
@@ -27,27 +27,44 @@ const TaskForm = (lista) => {
         const texto1 = document.getElementById("tareaEscrita").value;
         tareaParaAgregar.tarea = texto1;
 
-        const obteberId = () => { setId(ID + 1) }
-        obteberId()
-        tareaParaAgregar.id = ID
+
+        function obteberId() {
+            var d = new Date().getTime();
+            var uuid = 'xx-xxx'.replace(/[xy]/g, function (c) {
+                var r = (d + Math.random() * 16) % 16 | 0;
+                d = Math.floor(d / 16);
+                return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+            });
+            return uuid;
+        }
+        tareaParaAgregar.id = obteberId()
 
         // Actualizar el estado utilizando la función setListaDeTareas
-        lista.setListaDeTareas(prevLista => [...prevLista, tareaParaAgregar]);
+        setListaDeTareas(prevLista => [...prevLista, tareaParaAgregar]);
 
     };
 
     const handleSubmit = (event) => {
+        if (document.getElementById("tareaEscrita").value !== "") {
+            event.preventDefault();
+            agregarTarea();
+        }
+        else {
+            alert("La tarea no puede estar vacía")
+        }
 
-        event.preventDefault();
-        agregarTarea();
+        if (document.getElementById("fechaElegir").value === "") {
+            tareaParaAgregar.dia = ("Sin fecha");
+        }
 
+        document.getElementById("tareaEscrita").value = "";
     }
 
 
     return (
         <>
             <form onSubmit={handleSubmit} className="agregar">
-                <input type="date" id="fechaElegir" value={dia} onChange={ (ev)=> setDia(ev.target.value) } />
+                <input type="date" id="fechaElegir" value={dia} onChange={(ev) => setDia(ev.target.value)} />
                 <input type="Time" id="horaElegir" />
                 <input type="text" rows="5" id="tareaEscrita" />
                 <Button type='submit' variant="success" >Crear tarea</Button>

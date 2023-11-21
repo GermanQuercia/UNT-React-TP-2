@@ -5,8 +5,6 @@ import Table from 'react-bootstrap/Table';
 
 const TaskList = ({ listaDeTareas, setListaDeTareas }) => {
 
-    
-   
     return (
         <>
             <div>
@@ -26,7 +24,7 @@ const TaskList = ({ listaDeTareas, setListaDeTareas }) => {
                 <tbody>
 
                     {listaDeTareas.map((jsonObj, index) => (
-                        <TaskItem jsonObj={jsonObj} index={index} setListaDeTareas={setListaDeTareas}/>
+                        <TaskItem jsonObj={jsonObj} index={index} setListaDeTareas={setListaDeTareas} id={index} key={index}/>
                         ))}
                 
                 </tbody>

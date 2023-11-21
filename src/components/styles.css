@@ -1,5 +1,3 @@
-
-
 #tareaEscrita {
     width: 50%;
     height: 75px;
@@ -23,13 +21,13 @@
     border-radius: 7px;
 }
 
-
-.task-completa {
-    text-decoration:line-through;
+.task-completa td {
+    text-decoration: line-through;
     text-decoration-color: black;
-    text-decoration-thickness: 2px;    
-    
+    text-decoration-thickness: 2px;
+
 }
+
 
 tr {
     border-bottom: 3px solid rgb(39, 39, 39);

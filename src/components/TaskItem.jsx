@@ -30,7 +30,6 @@ const TaskItem = ({ jsonObj, index, setListaDeTareas }) => {
     };
 
 
-
     function completada(id) {
         const idDelElemento = id;
 
@@ -44,31 +43,26 @@ const TaskItem = ({ jsonObj, index, setListaDeTareas }) => {
         });
     }
 
-    let clase = jsonObj.completada ? 'task-completa' : 'task-incompleta'
+    let clase = jsonObj.completada ? 'task-completa' : '' ;
 
-    console.log('clase ', clase)
+
     return (
-
         <>
-                
                 <tr className={clase}>
                     <td>{index + 1}</td>
                     <td>{jsonObj.id}</td>
-                    <td>{new Date(jsonObj.dia).toLocaleDateString()}</td>
+                    <td>{jsonObj.dia}</td>
                     <td>{jsonObj.hora}</td>
                     <td>{jsonObj.tarea}</td>
                     <td>{`${jsonObj.completada}`}</td>
                     <td>
                         {/* <Button variant="danger" id={`${index}`} onClick={borrarTarea}><i class="fas fa-trash"></i></Button> */}
-                        <Button variant="success" onClick={() => completada(index)}><i class="fas fa-check"></i></Button>
-                        <Button variant="danger" onClick={() => eliminarTarea(jsonObj.id)}><i class="fas fa-trash"></i></Button>
+                        <Button variant="success" onClick={() => completada(index)}><i className="fas fa-check"></i></Button>
+                        <Button variant="danger" onClick={() => eliminarTarea(jsonObj.id)}><i className="fas fa-trash"></i></Button>
                     </td>
                 </tr>
-            
         </>
-
     )
-
 }
 
 export default TaskItem;

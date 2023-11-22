@@ -8,26 +8,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-
-
-  const [listaDeTareas, setListaDeTareas] = useState((window.localStorage.getItem('lista'))?(JSON.parse(window.localStorage.getItem('lista'))):[])
-
-
-  useEffect(() => {
+  const [listaDeTareas, setListaDeTareas] = useState(() => {
     try {
-      const lista = JSON.parse(window.localStorage.getItem('lista'));
-      setListaDeTareas(lista);
+      const storedLista = window.localStorage.getItem('lista');
+      return storedLista ? JSON.parse(storedLista) : [];
     } catch (error) {
-      console.log(error)
+      console.error(error);
+      return [];
     }
-  }, []);
-
-
+  });
+  
   useEffect(() => {
     try {
       window.localStorage.setItem('lista', JSON.stringify(listaDeTareas));
     } catch (error) {
-      console.error('Error al actualizar la lista de tareas en el almacenamiento local:', error);
+      console.error(error);
     }
   }, [listaDeTareas]);
 
@@ -37,7 +32,6 @@ function App() {
       <div className='conteiner'>
         <div className='lista'>
           <TaskList listaDeTareas={listaDeTareas} setListaDeTareas={setListaDeTareas} />
-
         </div>
         <div className='nueva'>
           <TaskForm setListaDeTareas={setListaDeTareas} />

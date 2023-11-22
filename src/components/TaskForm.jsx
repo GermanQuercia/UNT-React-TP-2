@@ -27,7 +27,6 @@ const TaskForm = ({ setListaDeTareas }) => {
         const texto1 = document.getElementById("tareaEscrita").value;
         tareaParaAgregar.tarea = texto1;
 
-
         function obteberId() {
             var d = new Date().getTime();
             var uuid = 'xx-xxx'.replace(/[xy]/g, function (c) {
@@ -57,7 +56,13 @@ const TaskForm = ({ setListaDeTareas }) => {
             tareaParaAgregar.dia = ("Sin fecha");
         }
 
+        if (document.getElementById("horaElegir").value === "") {
+            tareaParaAgregar.hora = ("Sin hora");
+        }
+
         document.getElementById("tareaEscrita").value = "";
+        document.getElementById("fechaElegir").value = "dd-mm-aaaa";
+        document.getElementById("horaElegir").value = "";
     }
 
 

@@ -1,15 +1,12 @@
 import Button from 'react-bootstrap/Button';
-import InputGroup from 'react-bootstrap/InputGroup';
 import './styles.css'
 
 const TaskItem = ({ jsonObj, index, setListaDeTareas }) => {
 
     
-    console.log("elvalor del indice es ", index)
 
-    const borrarTareaCorto = (event) => {
-        const idDelElemento = Number(event.target.id);
-        setListaDeTareas(prevLista => prevLista.filter((_, i) => i !== idDelElemento)) //funca bien
+    const borrarTareaCorto = (index) => {
+        setListaDeTareas(prevLista => prevLista.filter((_, i) => i !== index)) //funca bien
     };
 
     const eliminarTarea = (id) => {

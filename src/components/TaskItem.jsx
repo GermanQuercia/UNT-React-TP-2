@@ -2,8 +2,7 @@ import Button from 'react-bootstrap/Button';
 import './styles.css'
 
 const TaskItem = ({ jsonObj, index, setListaDeTareas }) => {
-
-    
+   
 
     const borrarTareaCorto = (index) => {
         setListaDeTareas(prevLista => prevLista.filter((_, i) => i !== index)) //funca bien

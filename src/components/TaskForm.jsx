@@ -69,9 +69,9 @@ const TaskForm = ({ setListaDeTareas }) => {
     return (
         <>
             <form onSubmit={handleSubmit} className="agregar">
-                <input type="date" id="fechaElegir" value={dia} onChange={(ev) => setDia(ev.target.value)} />
-                <input type="Time" id="horaElegir" />
-                <input type="text" rows="5" id="tareaEscrita" />
+                <input type="date" id="fechaElegir" />
+                <input type="time" id="horaElegir" />
+                <input type="text" id="tareaEscrita" />
                 <Button type='submit' variant="success" >Crear tarea</Button>
             </form>
         </>

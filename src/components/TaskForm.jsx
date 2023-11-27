@@ -5,8 +5,7 @@ import './styles.css';
 
 const TaskForm = ({ setListaDeTareas }) => {
 
-    const ID = 1;
-    const [dia, setDia] = useState("");
+
     const tareaParaAgregar = {
         id: "",
         dia: "",
@@ -38,7 +37,7 @@ const TaskForm = ({ setListaDeTareas }) => {
         }
         tareaParaAgregar.id = obteberId()
 
-        // Actualizar el estado utilizando la función setListaDeTareas
+
         setListaDeTareas(prevLista => [...prevLista, tareaParaAgregar]);
 
     };

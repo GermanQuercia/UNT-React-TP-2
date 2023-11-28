@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import TaskForm from './components/TaskForm';
+
 import TaskList from './components/TaskList';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
+
+  const [task, setTask] = useState({});
 
   const [listaDeTareas, setListaDeTareas] = useState(() => {
     try {
@@ -27,6 +30,9 @@ function App() {
   }, [listaDeTareas]);
 
 
+  function addTask(task){
+    setListaDeTareas([...listaDeTareas, task])
+  }
   return (
     <>
       <div className='conteiner'>
@@ -34,7 +40,8 @@ function App() {
           <TaskList listaDeTareas={listaDeTareas} setListaDeTareas={setListaDeTareas} />
         </div>
         <div className='nueva'>
-          <TaskForm setListaDeTareas={setListaDeTareas} />
+          {/* <TaskForm setListaDeTareas={setListaDeTareas} /> */}
+          <TaskForm onSubmit={(newTask) => addTask(newTask)} />
         </div>
       </div>
     </>

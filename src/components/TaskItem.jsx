@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import './styles.css'
 
 const TaskItem = ({ jsonObj, index, setListaDeTareas }) => {
+
 
     const borrarTareaCorto = (index) => {
         setListaDeTareas(prevLista => prevLista.filter((_, i) => i !== index)) //funca bien
@@ -24,14 +26,21 @@ const TaskItem = ({ jsonObj, index, setListaDeTareas }) => {
         });
     };
 
+    
 
     function completada(id) {
+        const idDelElemento = id;
+
         setListaDeTareas((prevLista) => {
+            // Create a new array to avoid mutating the previous state
             const updatedLista = [...prevLista];
-            updatedLista[id] = { ...updatedLista[id], completada: !updatedLista[id].completada };
+            // Update the completed status of the task at idDelElemento
+            updatedLista[idDelElemento] = { ...updatedLista[idDelElemento], completada: !updatedLista[idDelElemento].completada };
+            // Return the updated array
             return updatedLista;
         });
     }
+
     let clase = jsonObj.completada ? 'task-completa' : '';
 
 
@@ -39,14 +48,15 @@ const TaskItem = ({ jsonObj, index, setListaDeTareas }) => {
         <>
             <tr className={clase}>
                 <td>{index + 1}</td>
-                <td>{jsonObj.id}</td>
-                <td>{jsonObj.dia}</td>
-                <td>{jsonObj.hora}</td>
-                <td>{jsonObj.tarea}</td>
-                <td>{`${jsonObj.completada}`}</td>
+                
+                <td>{jsonObj.date}</td>
+                <td>{jsonObj.time}</td>
+                <td>{jsonObj.task}</td>
+                
                 <td>
-                    <Button variant="success" onClick={() => completada(index)}><i className="fas fa-check"></i></Button>
-                    <Button variant="danger" onClick={() => eliminarTarea(jsonObj.id)}><i className="fas fa-trash"></i></Button>
+                    {/* <Button variant="danger" id={`${index}`} onClick={borrarTarea}><i class="fas fa-trash"></i></Button> */}
+                    <button className='btn' onClick={() => completada(index)}><i className="fas fa-check text-success"></i></button>
+                    <button className='btn' onClick={() => eliminarTarea(jsonObj.id)}><i className="fas fa-trash text-danger"></i></button>
                 </td>
             </tr>
         </>

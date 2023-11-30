@@ -9,8 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  const [task, setTask] = useState({});
-
   const [listaDeTareas, setListaDeTareas] = useState(() => {
     try {
       const storedLista = window.localStorage.getItem('lista');
@@ -21,9 +19,12 @@ function App() {
     }
   });
   
+
+  
   useEffect(() => {
     try {
       window.localStorage.setItem('lista', JSON.stringify(listaDeTareas));
+
     } catch (error) {
       console.error(error);
     }
@@ -33,10 +34,15 @@ function App() {
   function addTask(task){
     setListaDeTareas([...listaDeTareas, task])
   }
+
+
   return (
     <>
+
       <div className='conteiner'>
-        <div className='lista'>
+
+        <div className='lista'>          
+
           <TaskList listaDeTareas={listaDeTareas} setListaDeTareas={setListaDeTareas} />
         </div>
         <div className='nueva'>

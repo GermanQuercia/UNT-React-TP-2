@@ -9,8 +9,7 @@ const TaskForm = ({ onSubmit }) => {
     const [date, setDate] = useState(getDateWithFormat());
     const [time, setTime] = useState(getTimeWithFormat());
     const [task, setTask] = useState('');
-    const [isCompleted, setIsCompleted] = useState(false);
-    
+        
 
 
     function getDateWithFormat() {
@@ -20,7 +19,7 @@ const TaskForm = ({ onSubmit }) => {
         const month = String(today.getMonth() + 1).padStart(2, '0');
         const day = String(today.getDate()).padStart(2, '0');
 
-        return `${year}-${day}-${month}`;
+        return `${year}/${day}/${month}`;
     }
 
     function getTimeWithFormat() {
@@ -80,7 +79,7 @@ const TaskForm = ({ onSubmit }) => {
             date:date,
             time:time,
             task:task,
-            isCompleted:isCompleted
+            isCompleted:false // Al momento de crear la tarea es false (no está completo)
         })
 
         }
